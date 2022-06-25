@@ -1,6 +1,7 @@
 import express from 'express'
 import db from "./app/config/database.js"
-;import productRoutes from './app/routes/index.js'
+import productRoutes from './app/routes/index.js'
+import cors from 'cors'
 
 
 const app= express()
@@ -13,6 +14,7 @@ try {
     console.log('Connection Error : ',error)
     
 }
+app.use(cors());
 
 app.use(express.json()) //midlle ware utk menerima body yg dikirim 
 // route

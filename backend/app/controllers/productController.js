@@ -1,5 +1,6 @@
 import Product from '../models/productModel.js'
 
+//Tampilkan semua data Product
 export const getAllProducts= async(req,res)=>{
  try {
     const products = await Product.findAll();
@@ -10,6 +11,8 @@ export const getAllProducts= async(req,res)=>{
      })   
  }   
 }
+
+
 
 export const getProductById= async(req,res)=>{
     try {
@@ -48,6 +51,22 @@ export const updateProduct= async (req,res)=>{
         });
         res.json({
             "message": "Product Updated"
+        })
+    } catch (error) {
+        res.json({ message:error.mesage })
+        
+    }
+}
+
+export const deleteProduct= async (req,res)=>{
+    try {
+        await Product.destroy({
+            where:{
+                id:req.params.id
+            }
+        });
+        res.json({
+            "message": "Product Telah dihapus"
         })
     } catch (error) {
         res.json({ message:error.mesage })
