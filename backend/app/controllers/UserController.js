@@ -4,7 +4,11 @@ import jwt from 'jsonwebtoken';
 
 export const getUsers =async(req,res)=>{
     try {
-        const users = await Users.findAll();
+        const users = await Users.findAll(
+            {
+                attributes:['id','name','email']
+            }
+        );
         res.json(users);
     } catch (error) {
         console.log(error);
@@ -38,8 +42,7 @@ export const Login= async(req,res)=>{
         const user =await Users.findAll({
             where:{
                 email:req.body.email,
-            }
-        
+            } 
         }
         );
         
@@ -69,4 +72,23 @@ export const Login= async(req,res)=>{
         res.status(404).json({msg:"email tidak ditemukan"})
         
     }
+}
+
+export const Logout=async(req,res)=>{
+    const refreshToken = req.cookies.refreshToken;
+        if(!refreshToken) return res.sendStatus(204);
+        const user = await Users.findAll({
+            where:{
+                refresh_token : refreshToken
+            }
+        });
+        if(!user[0]) return res.sendStatus(204);
+        const userId = user[0].id;
+        await Users.update({refreshToken:null},{
+            where:{
+                id:userId
+            }
+        });
+        res.clearCookie('refreshToken');
+        return res.sendStatus(200);
 }

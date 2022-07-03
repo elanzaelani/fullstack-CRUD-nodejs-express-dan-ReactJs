@@ -1,7 +1,19 @@
-POST http://localhost:5001/login
+POST http://localhost:5001/users/login
 Content-Type: application/json
 
 {
-    "email":"suni@gmail.com",
-	"password":"1234567",
+    "email":"elan@gmail.com",
+	"password":"1234",
 }
+
+###
+GET http://localhost:5001/users
+Authorization: Bearer
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJuYW1lIjoiZWxhbiIsImVtYWlsIjoiZWxhbkBnbWFpbC5jb20iLCJpYXQiOjE2NTY4NTI0MjYsImV4cCI6MTY1Njg1MjQ0Nn0.jHde-IsVCamQtkcL58O2FAezgAKJmJxivARvwze49DE
+
+###
+GET http://localhost:5001/token
+
+###
+
+GET http://localhost:5001/users/logout

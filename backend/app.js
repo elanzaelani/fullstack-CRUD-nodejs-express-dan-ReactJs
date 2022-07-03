@@ -1,9 +1,11 @@
 import express from 'express' //1
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import db from "./app/config/database.js"
 import cors from 'cors'
 import productRoutes from './app/routes/Product.js'
 import userRoutes from './app/routes/User.js';
+
 // import Users from './app/models/UserModel.js'
 dotenv.config();
 
@@ -19,13 +21,13 @@ try {
     console.log('Connection Error : ',error)
     
 }
-app.use(cors());
-
+app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cookieParser());
 app.use(express.json()) //midlle ware utk menerima body yg dikirim 
 
 // route
 app.use('/login',userRoutes);
-app.use('/user',userRoutes);
+app.use('/users',userRoutes);
 app.use('/products',productRoutes);
 
 app.use('/', (req, res) => {
@@ -35,4 +37,4 @@ app.use('/', (req, res) => {
 
 
 const port =5001
-app.listen(port,()=> console.log(`Servere berjalan di port ${port}`)); //3
+app.listen(port,()=> console.log(`Server berjalan di port ${port}`)); //3
