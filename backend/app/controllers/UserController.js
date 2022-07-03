@@ -24,7 +24,7 @@ export const register =async (req,res)=>{
             password:hashPassword,
 
         });
-        res.json({msg:"Register Berhasil !!"})
+        res.json({msg:"Registrasi Berhasil !!"})
     } catch (error) {
         console.log(error)
         
