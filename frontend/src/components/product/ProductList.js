@@ -3,9 +3,11 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 const ProductList = () => {
+
     const [products,setProduct] = useState([]);
 
     useEffect(()=>{
+       
         getProducts();
     },[]);
 
@@ -24,8 +26,10 @@ const ProductList = () => {
     }
 
     return (
+        
         <div>
-            <Link to="/add"className="button is-primary mt-5">Add New</Link>
+           .<div className="container">
+           <Link to="/add"className="button is-primary mt-5">Add New</Link>
             <table className="table is-striped">
                 <thead>
                     <tr>
@@ -49,6 +53,7 @@ const ProductList = () => {
                     ))}
                 </tbody>
             </table>
+           </div>
         </div>
     )
 }

@@ -11,11 +11,12 @@ const Login = () => {
     const Auth = async(ev) =>{
         ev.preventDefault();
         try {
-            await axios.post('http://localhost:5001/login',{
+            await axios.post('http://localhost:5001/users/login',{
                 email:email,
                 password:password,
             });
-            navigate("/dashboard")
+            navigate("dashboard")
+        
         } catch (error) {
             if(error.response){
                 setMsg(error.response.data.msg);

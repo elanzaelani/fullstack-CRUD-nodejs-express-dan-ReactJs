@@ -15,13 +15,13 @@ const Register = () => {
     const Register = async(ev) =>{
         ev.preventDefault();
         try {
-            await axios.post('http://localhost:5001/user',{
+            await axios.post('http://localhost:5001/users',{
                 name: name,
                 email:email,
                 password:password,
                 confPassword:confPassword
             });
-            navigate("/")
+            navigate("/login")
         } catch (error) {
             if(error.response){
                 setMsg(error.response.data.msg);

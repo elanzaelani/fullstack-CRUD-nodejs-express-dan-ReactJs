@@ -14,11 +14,11 @@ const AddProduct = () => {
             title : title,
             price:price
         }) ;
-        navigate("/")//di direct pake navigate ke home
+        navigate("/products")//di direct pake navigate ke home
     }
 
     return (
-        <div>
+        <div className ="container">
           
             <form onSubmit={saveProduct}>
                 <div className="field">
