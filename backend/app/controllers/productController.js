@@ -38,7 +38,7 @@ export const createdProduct= async (req,res)=>{
             "message": "Product created"
         })
     } catch (error) {
-        res.json({ message:error.mesage })
+        res.json({ message:error.message })
         
     }
 }

@@ -26,7 +26,6 @@ const ProductList = () => {
     }
 
     return (
-        
         <div>
            .<div className="container">
            <Link to="/add"className="button is-primary mt-5">Add New</Link>
@@ -53,6 +52,7 @@ const ProductList = () => {
                     ))}
                 </tbody>
             </table>
+
            </div>
         </div>
     )
